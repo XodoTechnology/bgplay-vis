@@ -1,0 +1,17 @@
+services:
+  bgplay:
+    build: .
+    image: bgplay-vis:latest
+    restart: unless-stopped
+    ports:
+      - "179:179"     # BGP — point routers at the host IP
+      - "8080:8080"   # web UI (put a reverse proxy with TLS in front)
+    command:
+      - -asn=65000
+      - -rid=192.0.2.1
+      - -bgp=:179
+      - -web=:8080
+      # - -peer=192.0.2.1        # uncomment to dial out instead
+      # - -demo                  # synthetic feed while testing
+    # read-only is safe — the daemon keeps everything in memory
+    read_only: true

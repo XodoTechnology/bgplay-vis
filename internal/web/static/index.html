@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>bgplay·vis — live BGP</title>
+<link rel="stylesheet" href="/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><circle cx='8' cy='8' r='6' fill='%2339c5cf'/></svg>">
+</head>
+<body>
+<canvas id="viz"></canvas>
+
+<header id="topbar">
+  <div class="brand">bgplay<span class="dot">·</span>vis</div>
+  <div id="peers"></div>
+  <div id="statline">
+    <span id="stat-prefixes" title="stored routes">–</span>
+    <span class="sep">·</span>
+    <span id="stat-rate" title="events/sec">– ev/s</span>
+    <canvas id="spark" width="110" height="22"></canvas>
+  </div>
+  <div id="searchbox">
+    <input id="search" type="text" autocomplete="off" spellcheck="false"
+           placeholder="search prefix · ip · AS — e.g. 1.1.1.0/24, 8.8.8.8, as13335">
+    <div id="searchhint"></div>
+  </div>
+  <div id="connstate" class="ok">live</div>
+</header>
+
+<aside id="feed"><div class="feed-title">EVENTS</div><div id="feedrows"></div></aside>
+
+<aside id="detail" class="hidden">
+  <div class="detail-head"><span id="detail-title">—</span><button id="detail-close">×</button></div>
+  <div id="detail-body"></div>
+</aside>
+
+<div id="toast"></div>
+
+<script src="/app.js"></script>
+</body>
+</html>
